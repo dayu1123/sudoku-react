@@ -1,38 +1,309 @@
-.App {
+* { box-sizing: border-box; }
+body{
+  font-family: Avenir, Heveltica, sans-serif;
+  /* background-color: #ECB390; */
+}
+li:nth-child(n):nth-child(-n+9) {
+  border-top-width: 4px;
+}
+li:nth-child(n+73):nth-child(-n+81) {
+  border-bottom-width: 4px;
+}
+li:nth-child(3n) {
+  border-right-width: 4px;
+}
+li:nth-child(9n+1) {
+  border-left-width: 4px;
+}
+li:nth-child(n+19):nth-child(-n+27) {
+  border-bottom-width: 4px;
+}
+li:nth-child(n+46):nth-child(-n+54) {
+  border-bottom-width: 4px;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(9, 5vw);
+  grid-template-rows: repeat(9, 5vw);
+  justify-content: center;
+  align-content: center;
+  grid-gap: 0rem;
+  list-style: none;
+  margin: 0 0 2vw;
+  padding: 0;
+  font-size: calc(2vw + 10px);
+}
+li {
+  margin: 0;
+  padding: 0;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  border: 1px solid black;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ 
 }
 
-.App-link {
-  color: #61dafb;
+.note {
+  background: #ddd;
+  font-family: monospace;
+  padding: 2em 5em;
+  font-size: 120%;
+  order: -1;
+}
+@supports (display:grid) {
+  .note {display:none;}
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+table { margin: 10px; border-spacing: 0px; }
+tr:first-child td {
+	border-top-color: black;
+}
+tr:nth-child(3n) td {
+	border-bottom-color: black;
+}
+td {
+	border: 1px solid lightgrey;
+	height: 40px;
+	width: 40px;
+}
+input.selected {
+  background-color: #C8E4FE;
+}
+input.box-selected {
+  background-color: #ECF2F9;
+}
+
+input.text-shadow-blue {
+  text-shadow: 0 0 0 rgb(0, 114, 227);
+}
+td:first-child {
+	border-left-color: black;
+}
+td:nth-child(3n) {
+	border-right-color: black;
+}
+input {
+	padding: 0;
+	text-align: center;
+	border: 0;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  /* color: #2C3639; */
+  color: transparent;
+  text-shadow: 0 0 0 #2C3639;
+  font-size: 28px;
+  
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* input:focus-visible {
+  border: 1px solid firebrick;
+} */
+
+/* input:hover {
+	background: #DAEAF1;
+} */
+input:focus {
+  outline: none;
+}
+
+.container-keyboard {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+  row-gap: 10px;
+  width: 300px;
+  cursor: pointer;
+}
+
+.number-container {
+  background-color: #DAEAF1;
+  width: auto;
+  padding: 8px;
+  text-align: center;
+  border: 0;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 44px;
+  color: rgb(0, 114, 227);
+  cursor: pointer;
+}
+p {
+  margin: 0;
+}
+
+.App {
+   display: flex;
+  /* flex-direction: column;
+  place-content: center;  */
+  justify-content: center;
+  /* max-width: 750px; */
+  width: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-menu {
+  display: none;
+}
+.dropdown-menu.display {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  position: absolute;
+  background-color: #fff;
+  align-items: center;
+  color:rgb(0, 114, 227);
+  padding: 10px 0;
+  gap: 10px;
+}
+.button-newgame-menu {
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+.menu-container {
+  margin-top: 10px;
+  max-width: 340px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.new-game-button {
+  width: 300px;
+  padding: 15px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0072e3;
+  border: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.container-button-menu {
+  display: flex;
+  gap: 10px;
+  place-content: center;
+  margin: 15px 0 15px 0px;
+}
+
+.container-button-menu button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 0;
+  background-color: #DAEAF1;
+  padding: 0;
+  cursor: pointer;
+}
+.container-button-menu button:hover {
+  border: 1px solid rgb(0, 114, 227);
+}
+.container-button-menu p {
+  text-align: center;
+  margin-top: 5px;
+  color: rgb(0, 114, 227);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+.validate-button svg{
+  /* transform: rotate(-10deg); */
+  width: 30px;
+}
+.erase-button svg {
+  width: 30px;
+}
+.hint-button svg {
+  width: 30px;
+}
+.redo-button svg {
+  transform: rotate(45deg);
+}
+.reset-button svg {
+  width: 30px;
+}
+.button-menu-container p {
+  text-align: center;
+}
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  max-width: 701px;
+  margin-left: 10px ;
+  margin-top: 20px;
+}
+.difficulty-container {
+  display: flex;
+  gap: 5px;
+}
+.difficulty-container .header-difficulty {
+  font-weight: bold;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+.validate-container {
+  display: flex;
+  gap: 5px;
+}
+.validate-container .validate-header {
+  font-weight: bold;
+  /* font-family: 'Montserrat', sans-serif; */
+
+}
+
+@media only screen and (min-width: 750) {
+  .App {
+    display: block;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media only screen and (max-width: 700px) {
+  .number-container {
+    background-color: #fff;
+    padding: 0;
+    /* font-size: 25px; */
+  }
+  .container-button-menu {
+    width: inherit;
+    gap: 29px;
+  }
+  .dropdown-menu.display {
+    width: 370px;
+  }
+  .new-game-button {
+    width: 370px;
+  }
+  .container-keyboard {
+    display: flex;
+    width: inherit;
+    justify-content: center;
+  }
+  .menu-container {
+    width: 370px;
+    max-width: 370px;
+  }
+  .info-container {
+    width: 370px;
+    margin-left: 0;
+  }
+  .container-header {
+    display: flex;
+    justify-content: center;
   }
 }
